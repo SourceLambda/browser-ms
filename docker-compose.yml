@@ -1,0 +1,12 @@
+version: "3.6"
+
+services:
+  app:
+    build: ./
+    container_name: lambdasource_browser_ms
+    volumes:
+      - ./:/browser_ms
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
