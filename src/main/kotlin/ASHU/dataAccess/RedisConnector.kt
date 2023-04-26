@@ -3,8 +3,6 @@ package ASHU.dataAccess
 import io.github.crackthecodeabhi.kreds.connection.Endpoint
 import io.github.crackthecodeabhi.kreds.connection.KredsClient
 import io.github.crackthecodeabhi.kreds.connection.newClient
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 //object RedisConnector {
@@ -29,8 +27,12 @@ import kotlinx.coroutines.launch
 //}
 
 object RedisConnector {
-    private val client : KredsClient = newClient(Endpoint("127.0.0.1",
-        6379))
+    private val host = System.getenv("REDIS_BROWSER_HOST")!!
+    private val port = System.getenv("REDIS_BROWSER_PORT")!!
+
+    private val client : KredsClient = newClient(Endpoint(
+        host, //172.21.0.3
+        Integer.parseInt(port)))
 
     const val DocCountKey = "QG29auKuotaXFB4OFhLekAuAKTVl70dDBGEH8IJQ4jhD4Skoaq1UJsVzpDoBFMtccR7PFsOd1Lkq16E9GINc00AyHReaYaKd5Vf"
 
