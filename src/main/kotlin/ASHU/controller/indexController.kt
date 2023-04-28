@@ -21,23 +21,6 @@ suspend private fun registerDocumentCount(){
     }.join()
 }
 
-//suspend private fun createIndexPerWord(post : Post){
-//
-//    GlobalScope.launch {
-//
-//        val words : List<String> = processWordList(post.toString().split(" "))
-//
-//        words.forEach {
-//
-//            if(StopWords.isValidWord(it)){
-//                RedisConnector.getInstance().sadd(it, post.id)
-//            }
-//        }
-//
-//    }.join()
-//
-//}
-
 suspend private fun createIndexPerWord(post : Post){
 
     GlobalScope.launch {

@@ -30,4 +30,7 @@ dependencies {
     implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("io.github.crackthecodeabhi:kreds:0.8")
+    implementation("com.rabbitmq:amqp-client:5.9.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8")
+
 }

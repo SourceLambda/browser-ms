@@ -1,9 +1,7 @@
 package ASHU.plugins
 
-import ASHU.controller.indexPost
 import ASHU.controller.rawSearch
 import ASHU.controller.sortResult
-import ASHU.models.Post
 import ASHU.models.PostSearched
 import ASHU.wordProcessing.StopWords
 import io.ktor.http.*
@@ -18,10 +16,10 @@ fun Application.configureRouting() {
             call.respondText(StopWords.stopWordsMap.size.toString())
         }
         post("/browser/index") {
-            val post : Post = call.receive<Post>()
-            indexPost(post)
-            call.response.status(HttpStatusCode.OK)
-            call.respondText("Indexed Correctly")
+//            val post : Post = call.receive<Post>()
+//            indexPost(post)
+//            call.response.status(HttpStatusCode.OK)
+            call.respondText("It is now implemented as a queue process")
         }
         get("/browser/search"){
             if(call.parameters["q"] == null) {

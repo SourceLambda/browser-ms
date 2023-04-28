@@ -29,6 +29,8 @@ import io.github.crackthecodeabhi.kreds.connection.newClient
 object RedisConnector {
     private val host = System.getenv("REDIS_BROWSER_HOST")!!
     private val port = System.getenv("REDIS_BROWSER_PORT")!!
+//    private val host = "172.17.0.2"
+//    private val port = "6379"
 
     private val client : KredsClient = newClient(Endpoint(
         host, //172.21.0.3
