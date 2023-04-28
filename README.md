@@ -22,6 +22,9 @@ Once you have downloaded'em, you must follow next steps:
       where,
       
       X = database host address (previous container)
+      
       Y = port where database host is runing
+      
       Z = host where rabbitmq is runnig, as this service keeps listening to a queue (for more info, please check: https://github.com/SourceLambda/sourcelambda_mq)
+      
       W = The queue name which the service will be attending (usually is "indexer")
