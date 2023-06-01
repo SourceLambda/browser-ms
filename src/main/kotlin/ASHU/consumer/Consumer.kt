@@ -13,13 +13,19 @@ import java.nio.charset.StandardCharsets
 
 fun runConsumer(){
     val factory = ConnectionFactory()
-//    val host = "172.17.0.3"
-//    val queueName = "indexer"
+    var host = "amqps://jkbhmtrf:jIE25F2lHM28d0R12uCRyBVJsd_lCTPF@gull.rmq.cloudamqp.com/jkbhmtrf"
+    var queueName = "indexer"
+    var port = 5672
+    var user = "jkbhmtrf"
+    var pass = "jIE25F2lHM28d0R12uCRyBVJsd_lCTPF"
 
-    val host = System.getenv("RABBITMQ_HOST")!!
-    val queueName = System.getenv("RABBITMQ_QUEUE_NAME")!!
+    if(System.getenv("RABBITMQ_HOST") != null) host = System.getenv("RABBITMQ_HOST")
+    if(System.getenv("RABBITMQ_PORT") != null) port = Integer.parseInt(System.getenv("RABBITMQ_PORT"))
+    if(System.getenv("RABBITMQ_USER") != null) user = System.getenv("RABBITMQ_USER")
+    if(System.getenv("RABBITMQ_PASS") != null) pass = System.getenv("RABBITMQ_PASS")
+    if(System.getenv("RABBITMQ_QUEUE_NAME") != null) queueName = System.getenv("RABBITMQ_QUEUE_NAME")
 
-    factory.host = host
+    factory.setUri(host)
     val connection = factory.newConnection()
     val channel = connection.createChannel()
 
@@ -27,7 +33,7 @@ fun runConsumer(){
 
     println("[MQ] the browser is already listening for indexing packages")
 
-    channel.basicConsume(queueName, true, deliverCallback, cancelCallback)
+    channel.basicConsume(queueName, false, deliverCallback, cancelCallback)
 
 
 }
